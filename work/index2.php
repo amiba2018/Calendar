@@ -23,3 +23,4 @@ for($i = count($aryCalendar[$j]); $i < 7; $i++) {
     $aryCalendar[$j][] = '';
 }
 $aryWeek = ['日', '月', '火', '水', '木', '金', '土'];
+echo 1;
