@@ -1,17 +1,21 @@
 <?php
 
-// if(isset($_GET['d'])) {
+if(isset($_GET["date"]) && $_GET["date"] != ""){
+	$date_timestamp = $_GET["date"];
+}else{
+	$date_timestamp = time();
+}
 
-// }
-$year = date('Y');
-$month = date('m');
-$day = date('d');
+$year = date('Y', $date_timestamp);
+$month = date('m', $date_timestamp);
+$day = date('d', $date_timestamp);
 
 $first_week = date('w', strtotime($year.$month.'01'));
 $month_day = date("t" , strtotime($year.$month.'01'));
 
 $prev_month = date("Y-m-d", mktime(0,0,0, $month-1, 1, $year));
 $next_month = date("Y-m-d", mktime(0,0,0, $month+1, 1, $year));
+echo $next_month;
 
 $calendar_table = '<table><tr>';
 
