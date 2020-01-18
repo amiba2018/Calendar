@@ -11,9 +11,9 @@ require 'work2.php';
     <body>
         <table>
             <tr>
-                <th><a href="?date=<?php echo $prev_month; ?>">←</a></th>
+                <th><a href="?ym=<?php echo $prev; ?>">←</a></th>
                 <th colspan="5"><?php echo $year; ?>年<?php echo $month; ?>月</th>
-                <th><a href="?date=<?php echo $next_month; ?>">→</th>
+                <th><a href="?ym=<?php echo $next; ?>">→</th>
             </tr>
                 <?php echo $calendar_table; ?>
         </table>

@@ -1,20 +1,25 @@
 <?php
 
-if(isset($_GET["date"]) && $_GET["date"] != ""){
-	$date_timestamp = $_GET["date"];
-}else{
-	$date_timestamp = time();
+if (isset($_GET['ym'])) {
+    $ym = $_GET['ym'];
+} else {
+    $ym = date('Y-m');
+}
+$timestamp = strtotime($ym . '-01');
+if ($timestamp === false) {
+    $ym = date('Y-m');
+    $timestamp = strtotime($ym . '-01');
 }
 
-$year = date('Y', $date_timestamp);
-$month = date('m', $date_timestamp);
-$day = date('d', $date_timestamp);
+$year = date('Y', $timestamp);
+$month = date('m', $timestamp);
+$day = date('d', $timestamp);
 
 $first_week = date('w', strtotime($year.$month.'01'));
 $month_day = date("t" , strtotime($year.$month.'01'));
 
-$prev_month = date("Y-m-d", mktime(0,0,0, $month-1, 1, $year));
-$next_month = date("Y-m-d", mktime(0,0,0, $month+1, 1, $year));
+$prev = date('Y-m', mktime(0, 0, 0, date('m', $timestamp)-1, 1, date('Y', $timestamp)));
+$next = date('Y-m', mktime(0, 0, 0, date('m', $timestamp)+1, 1, date('Y', $timestamp)));
 echo $next_month;
 
 $calendar_table = '<table><tr>';
